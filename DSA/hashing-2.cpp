@@ -447,3 +447,23 @@ int main(){
         cout<<mpp[num]<<endl;
     }
 }
+//here if u observe, it is unordered
+//3 12 2 1
+//if u run this program on different compiler it might be having different order
+//in unordered as the name, the order is something u cannot decide
+
+//now what is the advantage of using unordered map
+//when u r storing something in the unordered map
+//and fetching in the unordered map
+//the average and the best time complexity id O(1) {constant time}
+//and the worst case ends up taking O(N) {linear time}
+//linear time means N=no. of elements int the map
+
+//so our 1st priority should be unordered map
+//because the worst case happens very rare
+//if it gives u time limit exceeded then switch to the map
+
+//and y does the worst case happens?
+//because of internal collisions
+
+
