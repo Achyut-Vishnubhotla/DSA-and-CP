@@ -196,6 +196,72 @@ if one of the half is exhausted(i.e., completed of pushing element of that half)
 then without doubt the other half elements are directly pushed into final array without no comparision
 */
 
-//this is the explaination of the algorithm
+//u can say that after u have completed all the steps of divide and merge
+//the array u will get is always sorted
 
+//here v r dividing the array into 2 halves
+//but logically speaking if u r beaking the array into 2 new arrays
+//and again into 2 new arrays
+//and again into 2 new arrays
+//does that make any sense to write in pseudo code? -> no
+
+//this is where in the pseudocode v will try to play around with indexes instead of beaking the array
+
+//in order to write the pseudocode i have taken a array of size(n)=5
+//3,2,4,1,3
+//as u know that indexing will be from 0 to 4 in size 5
+// [3 2 4 1 3]
+//  0 1 2 3 4   <-indexing
+//  |       |
+// low     high
+
+//here low and high r starting point and ending point of the array
+
+
+
+//code:
+#include<bits/stdc++.h>
+using namespace std;
+void merge(vector<int> &arr, int low, int mid, int high){
+  vector<int> temp;
+  // [low..mid]
+  //[mid+1..high]
+  int left = low;
+  int right = mid+1;
+  while(left <= mid && right <= high){
+    if(arr[left] <= arr[right]){
+      temp.push_back(arr[left]);
+      left++;
+    }
+    else{
+      temp.push_back(arr[right]);
+      right++;
+    }
+  }
+  while(left<=mid){
+    temp.push_back(arr[left]);
+    left++;
+  }
+  while(right<=high){
+    temp.push_back(arr[right]);
+    right++;
+  }
+  for(int i=low;i<=high;i++){
+    arr[i]=temp[i-low];
+  }
+}
+void mS(vector<int> &arr, int low, int high){
+  if(low==high) return;
+  int mid = (low+high)/2;
+  mS(arr,low,mid);
+  mS(arr,mid+1,high);
+  merge(arr,low,mid,high);
+}
+void mergeSort(vector<int> &arr, int n){
+  mS(arr,0,n-1);
+}
+
+
+//timecomplexity of this algorithm:
+// log n (with base 2)
  
