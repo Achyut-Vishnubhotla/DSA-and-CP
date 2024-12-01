@@ -8,6 +8,11 @@ int main(){
         if(arr[i]<smallest){
             smallest = arr[i];
         }
+        /*instead of this if 
+        we can also use min() function 
+        to compare among the 2 values
+        => smallest = min(arr[i], smallest)
+        */
     }
     cout<<smallest;
 }
